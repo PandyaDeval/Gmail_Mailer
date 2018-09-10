@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<style type="text/css">
+	textarea,input {
+    width: 100%;
+    font-size: 15px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    color: black;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid black;
+    outline:none;
+    background:transparent;
+}
+
+input{
+	text-align:center;
+	color:yellow;
+	background-color:black;
+}
+
+::placeholder{
+	color:yellow;
+}
+</style>
+<script type="text/javascript">
+	function addcc()
+	{
+		var x=document.getElementById("nocc").value;
+		document.getElementById("cc").innerHTML="";
+			for(var i=1;i<=x;i++)
+			{
+				var s="cc"+i;
+				var element="<tr><td><input placeholder='CC "+i+"' type='email' name="+s+"></td></tr><br>";
+				document.getElementById("cc").innerHTML+=element;
+			}
+	}
+	function addbcc()
+	{
+		var x=document.getElementById("nobcc").value;
+		document.getElementById("bcc").innerHTML="";
+			for(var i=1;i<=x;i++)
+			{
+				var s="bcc"+i;
+				var element="<tr><td><input placeholder='BCC "+i+"' type='email' name="+s+"></td></tr><br>";
+				document.getElementById("bcc").innerHTML+=element;
+			}
+	}
+</script>
+<body style="background-image:url('back.jpg');background-attachment: fixed; width: 100%; height: 100%;">
+	<h1 style="color:yellow;"><center>Mailer</center></h1>
+<form action="sent.php" method="POST">
+	<table align="center">
+		<tr>
+			<td><input placeholder="Sender Mail ID" type="email" name="sender"></td>
+		</tr>
+		<tr>
+			<td><input placeholder="Sender password" type="password" name="senderpass"></td>
+		</tr>
+		<tr>
+			<td><input placeholder="To" type="email" name="receiver"></td>
+		</tr>
+		<tr>
+			<td><input id="nocc" placeholder="Number Of CC" oninput="addcc()" type="text" name="cc"></td>
+		</tr>
+		<tr >
+			<td id="cc"></td>
+		</tr>
+		<tr>
+			<td><input id="nobcc" placeholder="Number of BCC" oninput="addbcc()" type="text" name="bcc"></td>
+		</tr>
+		<tr>
+			<td id="bcc"></td>
+		</tr>
+		<tr>
+			<td><input placeholder="Subject" type="text" name="subject"></td>
+		</tr>
+		<tr>
+			<td><textarea style="background-color:black;color:yellow;" placeholder="Body" rows="5" cols="30" name="body"></textarea></td>
+		</tr>
+		<tr>
+			<td><input style="cursor:pointer;" type="file" name="uploaded_file" id="uploaded_file" /></td>
+		</tr>
+	</table>
+	<input style="width:20%; margin-left: 40%;margin-right: 40%;cursor:pointer;" type="submit" name="submit">
+</form>
+</body>
+</html>
